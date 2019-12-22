@@ -14,10 +14,10 @@ Matthew Ramir's (crasx) dotfiles based off of zsh. This was originally a custom 
 
 ```
 ln -s zsh/.zshrc 
-git clone git@github.com:[your user]/zsh_private.git plugins/zsh_private
+git clone git@github.com:[your user]/zsh_private.git zsh/plugins/zsh_private
 ```
 
-- Install [oh my zsh](https://ohmyz.sh/) and set as default shell. Relogin.
+- Install [oh my zsh](https://ohmyz.sh/) and set zsh as default shell. Relogin.
 
 ## Project goals
 - Migrate away from custom bashrc to a common supported platform. Allows for quicker setup time and community maintained platform. 

@@ -25,3 +25,5 @@ gits(){
 gs(){
 	git status
 }
+
+alias dr='drush'
