@@ -1,4 +1,6 @@
-# See https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template for defaults
+
+# Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
+umask 027
 
 export PATH="$HOME/.composer/vendor/bin:/srv/tools/composer/vendor/bin/:$PATH"
 
@@ -8,7 +10,7 @@ export ZSH_CUSTOM=$HOME/zsh
 HYPHEN_INSENSITIVE="true"
 # ZSH_THEME="geometry"
 
-plugins=(cp copydir history profiles autojump composer)
+plugins=(cp copydir history profiles composer)
 
 
 # Uncomment the following line if pasting URLs and other text is messed up.
@@ -23,7 +25,8 @@ COMPLETION_WAITING_DOTS="true"
 
 source $ZSH/oh-my-zsh.sh
 
-for f in $ZSH_CUSTOM/contrib/*/*.plugin.zsh; do source $f; done
+source $ZSH_CUSTOM/theme/geometry.zsh
+
 for f in $ZSH_CUSTOM/plugins/*/*.zsh; do source $f; done
 
 
@@ -35,8 +38,8 @@ GEOMETRY_STATUS_SYMBOL_ERROR="△"       # displayed when exit value is != 0
 GEOMETRY_STATUS_COLOR_ERROR="magenta"  # prompt symbol color when exit value is != 0
 GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
 GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
-GEOMETRY_STATUS_COLOR_HASH=true        # color status symbol based on hostname
 GEOMETRY_PATH_COLOR="cyan"
+GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 
 DISABLE_AUTO_TITLE="true"
 # clear title after command ends
@@ -45,11 +48,6 @@ add-zsh-hook -d precmd geometry::clear_title
 add-zsh-hook precmd customtitle
 
 
-
-export NVM_DIR=~/.nvm
-source /usr/local/opt/nvm/nvm.sh
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
 export XDEBUG_CONFIG="idekey=PHPSTORM"
