@@ -29,7 +29,14 @@ source $ZSH_CUSTOM/theme/geometry.zsh
 
 for f in $ZSH_CUSTOM/plugins/*/*.zsh; do source $f; done
 
-
+case "$OSTYPE" in
+  solaris*) echo "SOLARIS" ;;
+  darwin*)  echo "OSX" ;;
+  linux*)   for f in $ZSH_CUSTOM/platforms/linux/*.zsh; do source $f; done ;;
+  bsd*)     echo "BSD" ;;
+  msys*)    echo "WINDOWS" ;;
+  *)        echo "unknown: $OSTYPE" ;;
+esac
 
 GEOMETRY_PROMPT=(whoami geometry_status geometry_path ) # redefine left prompt
 GEOMETRY_RPROMPT=(pwd geometry_git )      # append exec_time and pwd right prompt
@@ -39,7 +46,7 @@ GEOMETRY_STATUS_COLOR_ERROR="magenta"  # prompt symbol color when exit value is 
 GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
 GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
 GEOMETRY_PATH_COLOR="cyan"
-GEOMETRY_PATH_COLOR=`geometry::hostcolor`
+#GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 
 DISABLE_AUTO_TITLE="true"
 # clear title after command ends

@@ -30,24 +30,9 @@ git clone git@github.com:[your user]/zsh_private.git zsh/plugins/zsh_private
 ```
  cd /
  sudo umount /mnt/e
- sudo mount -t drvfs E: /mnt/e -o metadata
+sudo mount -t drvfs E: /mnt/e -o metadata,uid=1000,gid=1000,umask=27
 ```
 
-- Fix owner
-```
-sudo chown crasx:crasx ~/. -R
-```
-- [Reset directory permissions](https://unix.stackexchange.com/questions/249845/reset-permissions-back-to-default)
-
-```
- cd ~
- sudo chown crasx:crasx . -R
- umask 027 # Make sure umask is set (optional, mine defaulted to 000)
- # I am assuming a umask of 027 here.
- find . -type d -exec chmod 750 {} \;
- chmod 700 .ssh
- chmod 600 .ssh/*
-```
 
 ## Project goals
 - Migrate away from custom bashrc to a common supported platform. Allows for quicker setup time and community maintained platform. 
