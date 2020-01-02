@@ -1,11 +1,7 @@
 #!/bin/bash
 
-f(){
-  echo "ubuntustart"
-}
-
 ubuntustart(){
-  service apache2 start
-  service mysql start
-  service webmin start
+  sudo service apache2 start
+  sudo service mysql start
+  sudo service webmin start
 }
