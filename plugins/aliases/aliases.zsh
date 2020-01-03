@@ -26,4 +26,11 @@ gs(){
 	git status
 }
 
+gl(){
+  if ! [ -z $1 ]; then
+    git log --pretty=$1
+  else
+    git log --pretty=oneline
+  fi
+}
 alias dr='drush'
