@@ -33,4 +33,8 @@ gl(){
     git log --pretty=oneline
   fi
 }
+
 alias dr='drush'
+alias v='vagrant'
+alias vup='vagrant up'
+

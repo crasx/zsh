@@ -1,3 +1,9 @@
 [submodule "theme"]
 	path = theme
 	url = https://github.com/crasx/geometry.git
+[submodule "contrib/geometry"]
+	path = contrib/geometry
+	url = git@github.com:geometry-zsh/geometry.git
+[submodule "contrib/git-open"]
+	path = contrib/git-open
+	url = git@github.com:paulirish/git-open.git

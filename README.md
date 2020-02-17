@@ -10,13 +10,13 @@ Matthew Ramir's (crasx) dotfiles based off of zsh. This was originally a custom 
 
 
 ## Setup
+- Install [oh my zsh](https://ohmyz.sh/) and set zsh as default shell.
 ```
-cd ~ && git clone git@github.com:crasx/zsh.git
+cd ~ && git clone git@github.com:crasx/zsh.git --recurse-submodules
 ln -s zsh/.zshrc 
 git clone git@github.com:[your user]/zsh_private.git zsh/plugins/zsh_private
 ```
 
-- Install [oh my zsh](https://ohmyz.sh/) and set zsh as default shell.
 
 ### WSL Setup
 - Install microsoft terminal following instructions from https://github.com/microsoft/terminal

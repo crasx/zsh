@@ -25,9 +25,9 @@ COMPLETION_WAITING_DOTS="true"
 
 source $ZSH/oh-my-zsh.sh
 
-source $ZSH_CUSTOM/theme/geometry.zsh
 
 for f in $ZSH_CUSTOM/plugins/*/*.zsh; do source $f; done
+for f in $ZSH_CUSTOM/contrib/*/*.zsh; do source $f; done
 
 case "$OSTYPE" in
   solaris*) echo "SOLARIS" ;;
@@ -48,6 +48,9 @@ GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
 GEOMETRY_PATH_COLOR="cyan"
 GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 
+
+
+
 DISABLE_AUTO_TITLE="true"
 # clear title after command ends
 customtitle() { print -n "\e]0;${PWD##*/}\a"; }
@@ -56,8 +59,6 @@ add-zsh-hook precmd customtitle
 
 
 
-# export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
-export XDEBUG_CONFIG="idekey=PHPSTORM"
 
 HISTSIZE=50000
 SAVEHIST=10000
@@ -86,3 +87,6 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# Finishing touches
+ssh-add 2&>/dev/null
