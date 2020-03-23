@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ubuntustart(){
   sudo service apache2 start

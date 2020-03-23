@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 DRUSHPATH=$HOME/.drush
 
 drush-vagrant-alias(){

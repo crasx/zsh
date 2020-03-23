@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 alias dr='drush'
 # Xdebug for drush commands when using the drush launcher.
