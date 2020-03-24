@@ -10,7 +10,7 @@ export ZSH_CUSTOM=$HOME/zsh
 HYPHEN_INSENSITIVE="true"
 # ZSH_THEME="geometry"
 
-plugins=(cp copydir history profiles composer)
+plugins=(cp copydir history profiles composer jump)
 
 
 # Uncomment the following line if pasting URLs and other text is messed up.
@@ -58,7 +58,8 @@ add-zsh-hook -d precmd geometry::clear_title
 add-zsh-hook precmd customtitle
 
 
-
+# export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
+export XDEBUG_CONFIG="idekey=PHPSTORM"
 
 HISTSIZE=50000
 SAVEHIST=10000
@@ -90,3 +91,5 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 # Finishing touches
 ssh-add 2&>/dev/null
+
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
