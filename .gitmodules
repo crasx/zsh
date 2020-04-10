@@ -1,5 +1,5 @@
 [submodule "theme"]
-	path = theme
+	path = themes
 	url = https://github.com/crasx/geometry.git
 [submodule "contrib/geometry"]
 	path = contrib/geometry

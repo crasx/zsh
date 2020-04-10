@@ -8,9 +8,9 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/zsh
 
 HYPHEN_INSENSITIVE="true"
-# ZSH_THEME="geometry"
+ZSH_THEME="geometry"
 
-plugins=(cp copydir history profiles composer jump)
+plugins=(cp copydir history profiles docker docker-compose composer jump dsh aliases)
 
 
 # Uncomment the following line if pasting URLs and other text is messed up.
@@ -22,12 +22,12 @@ plugins=(cp copydir history profiles composer jump)
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
+if [ "$HOST" = DENBLU001 ]; then
+    ZSH_DISABLE_COMPFIX=true
+fi
 
 source $ZSH/oh-my-zsh.sh
 
-
-for f in $ZSH_CUSTOM/plugins/*/*.zsh; do source $f; done
-for f in $ZSH_CUSTOM/contrib/*/*.zsh; do source $f; done
 
 case "$OSTYPE" in
   solaris*) echo "SOLARIS" ;;
