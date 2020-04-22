@@ -10,7 +10,7 @@ export ZSH_CUSTOM=$HOME/zsh
 HYPHEN_INSENSITIVE="true"
 ZSH_THEME="geometry"
 
-plugins=(cp copydir history profiles docker docker-compose composer jump dsh aliases)
+plugins=(cp copydir history profiles docker docker-compose composer jump dsh aliases contrib)
 
 
 # Uncomment the following line if pasting URLs and other text is messed up.
@@ -61,6 +61,7 @@ add-zsh-hook precmd customtitle
 # export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
 export XDEBUG_CONFIG="idekey=PHPSTORM"
 
+HISTIGNORE=""
 HISTSIZE=50000
 SAVEHIST=10000
 setopt extended_history

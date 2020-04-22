@@ -1,0 +1,21 @@
+# Don't remove hosts so we aren't prompted for priv elevation on boot/halt.
+config.hostsupdater.remove_on_suspend = false
+
+### ZSH Integration
+# Install zsh
+config.vm.provision 'shell', inline: "apt-get update && apt-get -y install zsh"
+
+$script = <<-SCRIPT
+
+  if [ ! -d ~/zsh ]; then
+    # Clone crasx dotfiles
+    git clone git://github.com/crasx/zsh.git ~/zsh
+  fi
+
+  . ~/zsh/platforms/linux.sh
+
+
+SCRIPT
+
+
+config.vm.provision 'shell', privileged: false, inline: $script

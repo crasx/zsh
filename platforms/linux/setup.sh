@@ -29,12 +29,12 @@ setup_ohmyzsh(){
 
 setup_zsh_profile() {
   echo "Symlink zshrc"
-  ln -sf ~/zsh/.zshrc ~/.zshrc
+  ln -nsf ~/zsh/.zshrc ~/.zshrc
   echo "Set sh env to zsh"
   sudo chsh `whoami` -s `which zsh`
 }
 
 
 setup_zsh
-setup_ohmyzsh
 setup_zsh_profile
+setup_ohmyzsh
