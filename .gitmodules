@@ -7,3 +7,9 @@
 [submodule "contrib/git-open"]
 	path = contrib/git-open
 	url = git@github.com:paulirish/git-open.git
+[submodule "plugins/contrib/git-open"]
+	path = plugins/contrib/git-open
+	url = git@github.com:paulirish/git-open.git
+[submodule "themes"]
+	path = themes
+	url = git@github.com:geometry-zsh/geometry.git

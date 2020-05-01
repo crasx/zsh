@@ -1,3 +1,0 @@
-# geometry_newline - add to the end of GEOMETRY_PROMPT to get a 2-line prompt!
-
-geometry_newline() { echo '\n\r'; }
