@@ -61,9 +61,18 @@ add-zsh-hook precmd customtitle
 # export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
 export XDEBUG_CONFIG="idekey=PHPSTORM"
 
-HISTIGNORE=""
+HISTIGNORE="gd:gds:gs:v:c"
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..|gd)"
+zshaddhistory() {
+  emulate -L zsh
+  ## uncomment if HISTORY_IGNORE
+  ## should use EXTENDED_GLOB syntax
+  # setopt extendedglob
+  [[ $1 != ${~HISTORY_IGNORE} ]]
+}
+
 HISTSIZE=50000
-SAVEHIST=10000
+SAVEHIST=1000
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -72,7 +81,7 @@ setopt inc_append_history
 setopt share_history
 
 # Changing directories
-setopt auto_cd
+# setopt auto_cd
 setopt auto_pushd
 unsetopt pushd_ignore_dups
 setopt pushdminus

@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-source "$ZSH_CUSTOM/plugins/aliases/functions/git.zsh"
+#source "$ZSH_CUSTOM/plugins/dsh/functions/fixdrupalperms.zsh"
+source "$ZSH_CUSTOM/plugins/dsh/functions/blt.zsh"
 
 
 alias dr='drush'
