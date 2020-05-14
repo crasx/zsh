@@ -1,51 +1,53 @@
+#!/bin/zsh
 
-# Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
-umask 027
-
+##########################
+# Bootstrapping
+##########################
 export PATH="$HOME/.composer/vendor/bin:/srv/tools/composer/vendor/bin/:$PATH"
-
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/zsh
 
-HYPHEN_INSENSITIVE="true"
 ZSH_THEME="geometry"
 
-plugins=(cp copydir history profiles docker docker-compose composer jump dsh aliases contrib)
+# Contrib plugins
+plugins=(cp copydir history profiles docker docker-compose composer jump)
 
+# Custom plugins
+plugins+=(aliases contrib dsh misc platforms)
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+if [ -d $ZSH_CUSTOM/plugins/zsh_private ]; then
+    plugins+=(zsh_private)
+fi
 
-# Enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
+# Todo: Refactor to generic wsl check?
 if [ "$HOST" = DENBLU001 ]; then
     ZSH_DISABLE_COMPFIX=true
 fi
 
+# Let oh-my-zsh do it's magic. We need to import it before defining our theme variables, but after we define our theme.
+# This is because our theme variables rely on functions from the theme.
 source $ZSH/oh-my-zsh.sh
 
 
-case "$OSTYPE" in
-  solaris*) echo "SOLARIS" ;;
-  darwin*)  for f in $ZSH_CUSTOM/platforms/osx/*.zsh; do source $f; done ;;
-  linux*)   for f in $ZSH_CUSTOM/platforms/linux/*.zsh; do source $f; done ;;
-  bsd*)     echo "BSD" ;;
-  msys*)    echo "WINDOWS" ;;
-  *)        echo "unknown: $OSTYPE" ;;
-esac
+########################
+# Theme setup
+########################
 
 GEOMETRY_PROMPT=(whoami geometry_status geometry_path ) # redefine left prompt
-GEOMETRY_RPROMPT=(pwd geometry_git )      # append exec_time and pwd right prompt
+
+if [ `whoami` != "vagrant" ]; then
+    # Show helpful git status on the right, but not in vagrant.
+    GEOMETRY_RPROMPT=( geometry_git )
+fi
+
 GEOMETRY_STATUS_SYMBOL="▲"             # default prompt symbol
+GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
+
 GEOMETRY_STATUS_SYMBOL_ERROR="△"       # displayed when exit value is != 0
 GEOMETRY_STATUS_COLOR_ERROR="magenta"  # prompt symbol color when exit value is != 0
-GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
 GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
-GEOMETRY_PATH_COLOR="cyan"
+
+# Set path color based on hash of hostname.
 GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 
 
@@ -61,8 +63,10 @@ add-zsh-hook precmd customtitle
 # export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
 export XDEBUG_CONFIG="idekey=PHPSTORM"
 
+# Todo: this doesnt work
 HISTIGNORE="gd:gds:gs:v:c"
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..|gd)"
+
 zshaddhistory() {
   emulate -L zsh
   ## uncomment if HISTORY_IGNORE
@@ -103,3 +107,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 ssh-add 2&>/dev/null
 
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
+umask 027

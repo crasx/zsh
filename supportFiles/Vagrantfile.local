@@ -9,10 +9,10 @@ $script = <<-SCRIPT
 
   if [ ! -d ~/zsh ]; then
     # Clone crasx dotfiles
-    git clone git://github.com/crasx/zsh.git ~/zsh
+    git clone --recursive git://github.com/crasx/zsh.git ~/zsh
   fi
 
-  . ~/zsh/platforms/linux/setup.sh
+  . ~/zsh/platforms/linux/setup.sh 2&>/dev/null
 
    # Enable blt telemetry
    if [ -f /var/www/drupalvm/vendor/bin/blt ]; then
