@@ -106,7 +106,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 # Finishing touches
 ssh-add 2&>/dev/null
 
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+if [ `command -v kubektl` ]; then source <(kubectl completion zsh); fi
 
 # Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
 umask 027
