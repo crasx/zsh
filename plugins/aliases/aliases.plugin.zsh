@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-
 source "$ZSH_CUSTOM/plugins/aliases/functions/git.zsh"
+source "$ZSH_CUSTOM/plugins/aliases/functions/vagrant.zsh"
 
 alias dc='docker-compose'
 alias dr='drush'

@@ -9,15 +9,28 @@ export ZSH_CUSTOM=$HOME/zsh
 
 ZSH_THEME="geometry"
 
-# Contrib plugins
-plugins=(cp copydir history profiles docker docker-compose composer jump)
+
+##########################
+# Plugins
+##########################
+
+# Core bash improvements
+plugins=(cp copydir history profiles)
+
+# Command specific plugins
+plugins+=(docker docker-compose composer)
+
+# Utilities
+plugins+=(thefuck jump)
 
 # Custom plugins
 plugins+=(aliases contrib dsh misc platforms)
 
+# Add private zsh plugin if it exists.
 if [ -d $ZSH_CUSTOM/plugins/zsh_private ]; then
     plugins+=(zsh_private)
 fi
+
 
 # Todo: Refactor to generic wsl check?
 if [ "$HOST" = DENBLU001 ]; then
