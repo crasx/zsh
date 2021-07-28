@@ -1,0 +1,112 @@
+[
+  {
+    "command": "-editor.debug.action.inlineBreakpoint",
+    "keybinding": "shift+f9",
+    "context": "editorTextFocus"
+  },
+  {
+    "command": "editor.debug.action.inlineBreakpoint",
+    "keybinding": "shift+f5",
+    "context": "editorTextFocus"
+  },
+  {
+    "command": "-workbench.action.debug.stepInto",
+    "keybinding": "f11",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.stepInto",
+    "keybinding": "f7",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.stepOver",
+    "keybinding": "f10",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.stepOver",
+    "keybinding": "f8",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-core.previousTab",
+    "keybinding": "ctrlcmd+alt+a"
+  },
+  {
+    "command": "core.previousTab",
+    "keybinding": "alt+shift+tab"
+  },
+  {
+    "command": "-core.nextTab",
+    "keybinding": "ctrlcmd+alt+d"
+  },
+  {
+    "command": "core.nextTab",
+    "keybinding": "alt+tab"
+  },
+  {
+    "command": "editor.action.duplicateSelection",
+    "keybinding": "meta+d"
+  },
+  {
+    "command": "editor.action.moveLinesDownAction",
+    "keybinding": "shift+alt+down",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.moveLinesDownAction",
+    "keybinding": "alt+down",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.moveLinesUpAction",
+    "keybinding": "shift+alt+up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.moveLinesUpAction",
+    "keybinding": "alt+up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.deleteLines",
+    "keybinding": "meta+del",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.deleteLines",
+    "keybinding": "meta+shift+k",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "workbench.action.debug.stepOut",
+    "keybinding": "shift+f8",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.stepOut",
+    "keybinding": "shift+f11",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.continue",
+    "keybinding": "f9",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.continue",
+    "keybinding": "f5",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.stop",
+    "keybinding": "shift+f6",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.stop",
+    "keybinding": "shift+f5",
+    "context": "inDebugMode"
+  }
+]
