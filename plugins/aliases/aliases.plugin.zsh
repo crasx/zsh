@@ -12,3 +12,4 @@ alias vup='vagrant up'
 
 alias composer1='composer self-update --1'
 alias composer2='composer self-update --2'
+alias c='composer'

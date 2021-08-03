@@ -1,6 +1,16 @@
 #!/bin/zsh
 
-##
+# Set git config defaults
+gitsetup(){
+  git config --global push.default current
+  git config --global alias.co checkout
+  git config --global core.autocrlf input
+  git config --global pager.branch cat
+  git config --global alias.amend 'commit --amend --no-edit'
+
+}
+
+## DESTRUCTIVE - deletes branches thay have been merged into the current one
 deletemergedbranches() {
   git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 }

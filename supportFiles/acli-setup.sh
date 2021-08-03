@@ -1,4 +1,5 @@
 #!/bin/bash
+## Setuo script for acquia cloud ide
 
 rm -f ~/.theia/keymap.json
 ln -s ~/zsh/consoleConfig/theia-keymap.json ~/.theia/keymap.json

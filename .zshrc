@@ -24,7 +24,7 @@ plugins+=(docker docker-compose composer)
 plugins+=(thefuck jump)
 
 # Custom plugins
-plugins+=(aliases contrib dsh misc platforms)
+plugins+=(aliases contrib dsh platforms)
 
 # Add private zsh plugin if it exists.
 if [ -d $ZSH_CUSTOM/plugins/zsh_private ]; then
@@ -46,11 +46,11 @@ source $ZSH/oh-my-zsh.sh
 # Theme setup
 ########################
 
-GEOMETRY_PROMPT=(whoami geometry_status geometry_path ) # redefine left prompt
+GEOMETRY_PROMPT=( whoami geometry_status geometry_path ) # redefine left prompt
 
 if [ `whoami` != "vagrant" ]; then
     # Show helpful git status on the right, but not in vagrant.
-    GEOMETRY_RPROMPT=( geometry_git )
+    GEOMETRY_RPROMPT=( geometry_git geometry_exec_time )
 fi
 
 GEOMETRY_STATUS_SYMBOL="▲"             # default prompt symbol
@@ -63,8 +63,9 @@ GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
 # Set path color based on hash of hostname.
 GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 
-
-
+# Docker config
+export COMPOSE_DOCKER_CLI_BUILD=1;
+export DOCKER_BUILDKIT=1;
 
 DISABLE_AUTO_TITLE="true"
 # clear title after command ends
@@ -123,3 +124,30 @@ if [ `command -v kubektl` ]; then source <(kubectl completion zsh); fi
 
 # Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
 umask 027
+
+## BLT really insists on adding this
+function blt() {
+  if [[ ! -z ${AH_SITE_ENVIRONMENT} ]]; then
+    PROJECT_ROOT="/var/www/html/${AH_SITE_GROUP}.${AH_SITE_ENVIRONMENT}"
+  elif [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
+  else
+    PROJECT_ROOT="."
+  fi
+
+  if [ -f "$PROJECT_ROOT/vendor/bin/blt" ]; then
+    $PROJECT_ROOT/vendor/bin/blt "$@"
+
+  # Check for local BLT.
+  elif [ -f "./vendor/bin/blt" ]; then
+    ./vendor/bin/blt "$@"
+
+  else
+    echo "You must run this command from within a BLT-generated project."
+    return 1
+  fi
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
