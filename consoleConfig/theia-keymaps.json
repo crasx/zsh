@@ -1,0 +1,62 @@
+[
+  {
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "keybinding": "meta+d",
+    "when": "editorFocus"
+  },
+  {
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "keybinding": "meta+shift+d",
+    "when": "editorFocus"
+  },
+  {
+    "command": "-editor.action.revealDefinition",
+    "keybinding": "ctrlcmd+f11",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "command": "editor.action.revealDefinition",
+    "keybinding": "meta+b",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "command": "-editor.action.moveLinesDownAction",
+    "keybinding": "alt+down",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.moveLinesDownAction",
+    "keybinding": "shift+alt+down",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.moveLinesUpAction",
+    "keybinding": "shift+alt+up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.moveLinesUpAction",
+    "keybinding": "alt+up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.copyLinesUpAction",
+    "keybinding": "meta+shift+alt+up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.copyLinesUpAction",
+    "keybinding": "shift+alt+up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.copyLinesDownAction",
+    "keybinding": "meta+d",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.copyLinesDownAction",
+    "keybinding": "shift+alt+down",
+    "when": "editorTextFocus && !editorReadonly"
+  }
+]
