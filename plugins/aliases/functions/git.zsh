@@ -15,6 +15,13 @@ deletemergedbranches() {
   git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 }
 
+deletesandboxbranches() {
+ git branch | grep sandbox | xargs git branch -d
+}
+deletesandboxbranchesforced() {
+ git branch | grep sandbox | xargs git branch -D
+}
+
 # Git push origin
 gpo() {
   branch=$(git branch | awk '/^\* / { print $2 }')
