@@ -46,7 +46,7 @@ source $ZSH/oh-my-zsh.sh
 # Theme setup
 ########################
 
-GEOMETRY_PROMPT=( whoami geometry_status geometry_path ) # redefine left prompt
+GEOMETRY_PROMPT=( geometry_hostname geometry_status geometry_path ) # redefine left prompt
 
 if [ `whoami` != "vagrant" ]; then
     # Show helpful git status on the right, but not in vagrant.
