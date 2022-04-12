@@ -1,5 +1,45 @@
 [
   {
+    "command": "-deleteAllLeft",
+    "keybinding": "meta+backspace",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "deleteAllLeft",
+    "keybinding": "meta+ctrl+backspace",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.debug.action.toggleBreakpoint",
+    "keybinding": "f9",
+    "context": "editorTextFocus"
+  },
+  {
+    "command": "editor.debug.action.toggleBreakpoint",
+    "keybinding": "ctrl+f9",
+    "context": "editorTextFocus"
+  },
+  {
+    "command": "-workbench.action.debug.stepOut",
+    "keybinding": "shift+f11",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.stepOut",
+    "keybinding": "shift+f7",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.continue",
+    "keybinding": "f5",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.continue",
+    "keybinding": "f9",
+    "context": "inDebugMode"
+  },
+  {
     "command": "-editor.action.addSelectionToNextFindMatch",
     "keybinding": "meta+d",
     "when": "editorFocus"
@@ -58,5 +98,45 @@
     "command": "-editor.action.copyLinesDownAction",
     "keybinding": "shift+alt+down",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "workbench.action.debug.stepInto",
+    "keybinding": "f7",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.stepInto",
+    "keybinding": "f11",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.stepOver",
+    "keybinding": "f8",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.stepOver",
+    "keybinding": "f10",
+    "context": "inDebugMode"
+  },
+  {
+    "command": "editor.action.deleteLines",
+    "keybinding": "meta+backspace",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.deleteLines",
+    "keybinding": "meta+shift+k",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "editor.action.formatDocument",
+    "keybinding": "meta+alt+l",
+    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.formatDocument",
+    "keybinding": "shift+alt+f",
+    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
   }
 ]
