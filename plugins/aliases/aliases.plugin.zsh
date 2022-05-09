@@ -1,13 +1,10 @@
 #!/bin/zsh
 
-source "$ZSH_CUSTOM/plugins/aliases/functions/git.zsh"
-source "$ZSH_CUSTOM/plugins/aliases/functions/vagrant.zsh"
+for f in $ZSH_CUSTOM/plugins/aliases/functions/*.zsh; do source $f; done ;
 
 alias dc='docker-compose'
 
 alias dr='drush'
-alias ldr='lando drush'
-alias lblt='lando blt'
 
 alias rezsh='source ~/.zshrc'
 
