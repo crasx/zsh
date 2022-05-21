@@ -66,9 +66,5 @@ ga() {
 
 # Git log but pretty
 gl() {
-  if ! [ -z $1 ]; then
-    git log --pretty=$1
-  else
-    git log --pretty=oneline
-  fi
+  git log --pretty=oneline
 }
