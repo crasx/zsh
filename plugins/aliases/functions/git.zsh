@@ -1,5 +1,12 @@
 #!/bin/zsh
 
+
+alias gs="git status"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias ga="git add"
+alias gl="git log --oneline --graph"
+
 # Set git config defaults
 gitsetup(){
   git config --global push.default current
@@ -42,29 +49,4 @@ grhh() {
 gcr() {
   gcfd
   grhh
-}
-
-# Git status
-gs() {
-  git status
-}
-
-# Git diff
-gd() {
-  git diff
-}
-
-# Git diff of staged files
-gds() {
-  git diff --staged
-}
-
-# Add files to git.
-ga() {
-  git add "$@"
-}
-
-# Git log but pretty
-gl() {
-  git log --pretty=oneline
 }
