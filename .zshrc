@@ -15,13 +15,13 @@ ZSH_THEME="geometry"
 ##########################
 
 # Core bash improvements
-plugins=(cp copydir history profiles)
+plugins=(cp history profiles)
 
 # Command specific plugins
 plugins+=(docker docker-compose composer)
 
 # Utilities
-plugins+=(thefuck jump)
+plugins+=(jump)
 
 # Custom plugins
 plugins+=(aliases contrib dsh platforms)
@@ -31,11 +31,6 @@ if [ -d $ZSH_CUSTOM/plugins/zsh_private ]; then
     plugins+=(zsh_private)
 fi
 
-
-# Todo: Refactor to generic wsl check?
-if [ "$HOST" = DENBLU001 ]; then
-    ZSH_DISABLE_COMPFIX=true
-fi
 
 # Let oh-my-zsh do it's magic. We need to import it before defining our theme variables, but after we define our theme.
 # This is because our theme variables rely on functions from the theme.
@@ -124,29 +119,6 @@ if [ `command -v kubektl` ]; then source <(kubectl completion zsh); fi
 
 # Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
 umask 027
-
-## BLT really insists on adding this
-function blt() {
-  if [[ ! -z ${AH_SITE_ENVIRONMENT} ]]; then
-    PROJECT_ROOT="/var/www/html/${AH_SITE_GROUP}.${AH_SITE_ENVIRONMENT}"
-  elif [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
-    PROJECT_ROOT=$(git rev-parse --show-cdup)
-  else
-    PROJECT_ROOT="."
-  fi
-
-  if [ -f "$PROJECT_ROOT/vendor/bin/blt" ]; then
-    $PROJECT_ROOT/vendor/bin/blt "$@"
-
-  # Check for local BLT.
-  elif [ -f "./vendor/bin/blt" ]; then
-    ./vendor/bin/blt "$@"
-
-  else
-    echo "You must run this command from within a BLT-generated project."
-    return 1
-  fi
-}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
