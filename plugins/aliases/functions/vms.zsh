@@ -1,20 +1,29 @@
 #!/bin/bash
 
-# Aliases for Lando projects
-alias ldr='lando drush'
-alias lblt='lando blt'
+if command -v lando &> /dev/null; then
+    # Aliases for Lando projects
+    alias ldr='lando drush'
+    alias lblt='lando blt'
 
-alias lnd='lando'
-alias l='lando'
+    alias lnd='lando'
+    alias l='lando'
+fi
 
-# Aliases for ddev projects
-alias dd='ddev'
-alias ddr='ddev exec drush'
-alias ddr='ddev exec vendor/bin/blt'
+if command -v ddev &> /dev/null; then
+    # Aliases for ddev projects
+    alias dd='ddev'
+    alias ddr='ddev exec drush'
+    alias ddr='ddev exec vendor/bin/blt'
+fi
 
 
+if command -v vagrant &> /dev/null; then
+    # Aliases for vagrant projects
+    alias v='vagrant'
+    alias vup='vagrant up'
 
-# I often have multiple VM's running at once. This helps shut them all down.
-vagrantshutdownall(){
- vagrant global-status  | grep running | awk '{print $1}' | xargs -n1 echo vagrant halt | bash
-}
+    # Shutdown all vagrant vms
+    vagrantshutdownall(){
+    vagrant global-status  | grep running | awk '{print $1}' | xargs -n1 echo vagrant halt | bash
+    }
+fi
