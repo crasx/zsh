@@ -58,6 +58,11 @@ GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
 # Set path color based on hash of hostname.
 GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 
+# Better colors
+if [ `hostname` = "hawkeye" ]; then
+  GEOMETRY_PATH_COLOR=9
+fi
+
 # Docker config
 export COMPOSE_DOCKER_CLI_BUILD=1;
 export DOCKER_BUILDKIT=1;
