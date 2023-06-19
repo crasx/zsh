@@ -21,7 +21,7 @@ plugins=(cp history profiles)
 plugins+=(docker docker-compose composer)
 
 # Utilities
-plugins+=(jump)
+plugins+=(jump kubectl)
 
 # Custom plugins
 plugins+=(aliases contrib dsh platforms)
