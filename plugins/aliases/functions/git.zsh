@@ -9,6 +9,7 @@ alias gl="git log --oneline --graph"
 
 # Set git config defaults
 gitsetup(){
+  git config --global init.defaultBranch main
   git config --global push.default current
   git config --global alias.co checkout
   git config --global core.autocrlf input

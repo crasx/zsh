@@ -15,4 +15,4 @@ alias c='composer'
 
 alias h="history"
 
-alias ll="ls -altr"
+alias ll="ls -altr"`

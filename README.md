@@ -1,61 +1,59 @@
-Matthew Ramir's (crasx) dotfiles based off of zsh. This was originally a custom bash setup based off of learnings from u/josephdpurcell and u/yesct. Convered to zsh for standardization.
+# About
 
-## Use case
-- On OSX I use [iterm2](https://iterm2.com/)
-- On WIN I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-- I do a lot of Drupal development
-- I currently use nano over vim
-- I have difficulty typing, so many decisions are made around what is easier for me instead of what is faster.
-- Using a mouse is more difficult for me than typing, so I prefer to touch the mouse as little as possible.
+## Theme
+Shout out to zsh geometry for a beautiful zsh theme.
 
+https://github.com/geometry-zsh/geometry
 
-## Setup
+# Setup
 - Install [oh my zsh](https://ohmyz.sh/) and set zsh as default shell.
+- Clone the repository to ~/zsh
 ```
 cd ~ && git clone git@github.com:crasx/zsh.git --recurse-submodules
+# Or https
+cd ~ && git clone https://github.com/crasx/zsh.git --recurse-submodules
+```
+- Symlink zsh RC
+```
 ln -s zsh/.zshrc 
+```
+- Add your customizations on top
+```
 git clone git@github.com:[your user]/zsh_private.git zsh/plugins/zsh_private
 ```
 
+# Drush Aliases
+* `dc` for `docker compose`
+* `dr` for `drush`
+* `composer1` for `composer self-update --1`
+* `composer2` for `composer self-update --2`
+* `c` for `composer`
 
-### WSL Setup
-- Install microsoft terminal following instructions from https://github.com/microsoft/terminal
-- Launch Terminal, edit settings 
-- Copy setting from consoleconfig/WindowsTerminal.json into settings file
-
-#### Custom windows setup
-- Homedir located at e:/crasx
-- Update /etc/passwd to use /mnt/e/crasx as homedirectory
-- [Remount e with metadata flag](https://blogs.msdn.microsoft.com/commandline/2018/01/12/chmod-chown-wsl-improvements/)
-```
- cd /
- sudo umount /mnt/e
-sudo mount -t drvfs E: /mnt/e -o metadata,uid=1000,gid=1000,umask=27
-```
+# System Aliases
+* `h` for `history`
+* `ll` for `ls -altr`
+* `rezsh` for `source ~/.zshrc`
 
 
-## Project goals
-- Migrate away from custom bashrc to a common supported platform. Allows for quicker setup time and community maintained platform. 
-- Move my configuration to git for tracking and reusability.
-- Marginally make my life easier, every bit helps.
+# Git Aliases
+The first few aliases define shortcuts for the following git commands:
 
-## Plugin reasoning
-- cp copydir git history - basic improvements
-- sublime - feature I can use, lightweight
-- autojump - Uses a binary to jump around instead of bash logic.
+-   `gs`  for  `git status`
+-   `gd`  for  `git diff`
+-   `gds`  for  `git diff --staged`
+-   `ga`  for  `git add`
+-   `gl`  for  `git log --oneline --graph`
 
-## Other reasoning
-- Not everything needs an alias. I would rather tab-complete `drush-vagrant-alias` than remember `dva`
-- [umask 027](https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/)
-  - I like the idea of security by default, and this makes it extremely easy to give people permissions. For example if I want to give `mary` access to `~/secret/a` but not `~/secret/b` I can add the group `mary` to `~/secret/a`. If a user needs write, I can `g+x` that directory.
-  - Unknowns - What would the permissions for `~/secret` need to be? Can I use an ACL?
-  
+The `gitsetup` function sets some git config defaults, such as the default branch to use when creating a new repository, the default push behavior, and the alias for the `checkout` command.
 
-## Private files
-I have a few aliases for sshing to servers that I want to keep private. To accomplish this I add a secondary custom plugin directory.
+The `deletemergedbranches` function deletes any branches that have been merged into the current branch. This can be useful for cleaning up old branches that are no longer needed.
 
-### TODO:
-- Clean git aliases
-- Setup script
-- Drush aliases.
-- Make fixdrupalperms generic
+The `deletesandboxbranches` and `deletesandboxbranchesforced` functions delete any branches that start with the word "sandbox". The `deletesandboxbranchesforced` function is more destructive, as it does not prompt for confirmation before deleting the branches.
+
+The `gpo` function pushes the current branch to the remote origin repository. This is useful for keeping your local changes synchronized with the remote repository.
+
+The `gcfd` function deletes all untracked files and directories from the current working directory. This can be useful for cleaning up your working directory before committing changes.
+
+The `grhh` function resets all tracked files in the current working directory to the HEAD commit. This is useful for undoing changes that you have made to your local repository.
+
+The `gcr` function combines the `gcfd` and `grhh` functions to reset all git changes in the current working directory. This is a quick way to undo any changes that you have made to your local repository.

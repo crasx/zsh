@@ -13,7 +13,7 @@ if command -v ddev &> /dev/null; then
     # Aliases for ddev projects
     alias dd='ddev'
     alias ddr='ddev exec drush'
-    alias ddr='ddev exec vendor/bin/blt'
+    alias dblt='ddev exec vendor/bin/blt'
 fi
 
 
