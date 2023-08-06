@@ -11,8 +11,8 @@ alias rezsh='source ~/.zshrc'
 
 alias composer1='composer self-update --1'
 alias composer2='composer self-update --2'
-alias c='composer'
+alias c='composer' 
 
 alias h="history"
 
-alias ll="ls -altr"`
+alias ll="ls -altr"
