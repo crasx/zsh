@@ -22,12 +22,17 @@ ln -s zsh/.zshrc
 git clone git@github.com:[your user]/zsh_private.git zsh/plugins/zsh_private
 ```
 
-# Drush Aliases
+# Drupal Aliases
 * `dc` for `docker compose`
 * `dr` for `drush`
 * `composer1` for `composer self-update --1`
 * `composer2` for `composer self-update --2`
 * `c` for `composer`
+* `ddr` for `ddev drush`
+* `dblt` for `ddev blt`
+* `ldr` for `lando drush`
+* `lblt` for `lando blt`
+
 
 # System Aliases
 * `h` for `history`
