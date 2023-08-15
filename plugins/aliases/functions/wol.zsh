@@ -8,13 +8,10 @@ wake_device() {
         return 1
     fi
 
+    # https://stackoverflow.com/questions/31588035/bash-one-line-command-to-send-wake-on-lan-magic-packet-without-specific-tool
     MAC_ADDRESS=$(echo $1 | tr '[:upper:]' '[:lower:]')  # Convert to lowercase
-    BINARY_MAC=$(echo $MAC_ADDRESS | sed 's/://g' | sed 's/\(..\)/\\x\1/g')
-
-    # Create the magic packet
-    MAGIC_PACKET=$(printf '\xff%.0s' {1..6})
-    MAGIC_PACKET="$MAGIC_PACKET$BINARY_MAC"
-
-    # Send the magic packet to the broadcast address
-    echo -n -e $MAGIC_PACKET | nc -w1 -u 255.255.255.255 9
+    Broadcast=255.255.255.255
+    PortNumber=4000
+    echo $MAC_ADDRESS
+    echo -e $(echo $(printf 'f%.0s' {1..12}; printf "$(echo $MAC_ADDRESS | sed 's/://g')%.0s" {1..16}) | sed -e 's/../\\x&/g') | nc -w1 -u -b $Broadcast $PortNumber
 }
