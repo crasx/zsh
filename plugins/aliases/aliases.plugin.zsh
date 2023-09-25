@@ -5,6 +5,7 @@ for f in $ZSH_CUSTOM/plugins/aliases/functions/*.zsh; do source $f; done ;
 alias dc='docker compose'
 
 alias dr='drush'
+alias drx='DRUSH_ALLOW_XDEBUG=1 drush'
 
 alias rezsh='source ~/.zshrc'
 
@@ -16,3 +17,5 @@ alias c='composer'
 alias h="history"
 
 alias ll="ls -altr"
+
+
