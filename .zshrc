@@ -3,12 +3,11 @@
 ##########################
 # Bootstrapping
 ##########################
-export PATH="$HOME/.composer/vendor/bin:/srv/tools/composer/vendor/bin/:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/zsh
 
 ZSH_THEME="geometry"
-
 
 ##########################
 # Plugins
@@ -21,7 +20,7 @@ plugins=(cp history profiles)
 plugins+=(docker docker-compose composer)
 
 # Utilities
-plugins+=(jump kubectl)
+plugins+=(jump kubectl helm)
 
 # Custom plugins
 plugins+=(aliases contrib dsh platforms)
