@@ -14,4 +14,9 @@ kubeconfigset() {
 }
 
 # Add zsh completion for kubeconfigset
-compdef '_files -W ~/.kube/kubeconfig/' kubeconfigset
+if [ -n "$ZSH_VERSION" ]; then
+  compdef '_files -W ~/.kube/kubeconfig/' kubeconfigset
+fi
+
+
+alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive"

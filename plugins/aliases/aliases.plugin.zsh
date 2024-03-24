@@ -18,4 +18,16 @@ alias h="history"
 
 alias ll="ls -altr"
 
+hr() {
+  echo "------------------------------------------------------------"
+}
 
+mkcd() {
+  mkdir -p $1
+  cd $1
+}
+
+aptupgrade() {
+  sudo apt update
+  sudo apt upgrade
+}
