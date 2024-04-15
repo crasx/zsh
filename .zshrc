@@ -3,7 +3,7 @@
 ##########################
 # Bootstrapping
 ##########################
-export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="./vendor/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/zsh
 
@@ -23,7 +23,7 @@ plugins+=(docker docker-compose composer)
 plugins+=(jump kubectl helm)
 
 # Custom plugins
-plugins+=(aliases contrib dsh platforms)
+plugins+=(aliases contrib platforms)
 
 # Add private zsh plugin if it exists.
 if [ -d $ZSH_CUSTOM/plugins/zsh_private ]; then
@@ -72,10 +72,6 @@ customtitle() { print -n "\e]0;${PWD##*/}\a"; }
 add-zsh-hook -d precmd geometry::clear_title
 add-zsh-hook precmd customtitle
 
-
-# export XDEBUG_CONFIG="remote_enable=1 remote_mode=req remote_port=9000 remote_host=127.0.0.1 remote_connect_back=0 idekey=PHPSTORM"
-export XDEBUG_CONFIG="idekey=PHPSTORM"
-
 # Todo: this doesnt work
 HISTIGNORE="gd:gds:gs:v:c"
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..|gd)"
@@ -98,7 +94,7 @@ setopt inc_append_history
 setopt share_history
 
 # Changing directories
-# setopt auto_cd
+unsetopt auto_cd
 setopt auto_pushd
 unsetopt pushd_ignore_dups
 setopt pushdminus
