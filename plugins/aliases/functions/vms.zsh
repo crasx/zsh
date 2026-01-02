@@ -11,9 +11,10 @@ fi
 
 if command -v ddev &> /dev/null; then
     # Aliases for ddev projects
-    alias dd='ddev'
+    alias d='ddev'
     alias dds='ddev start'
-    alias ddr='ddev exec drush'
+    alias ddc='ddev composer'
+    alias ddr='ddev drush'
     alias ddrx='ddev exec DRUSH_ALLOW_XDEBUG=1 drush'
     alias dblt='ddev exec vendor/bin/blt'
 fi

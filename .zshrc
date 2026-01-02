@@ -20,7 +20,7 @@ plugins=(cp history profiles)
 plugins+=(docker docker-compose composer)
 
 # Utilities
-plugins+=(jump kubectl helm)
+plugins+=(jump kubectl helm terraform)
 
 # Custom plugins
 plugins+=(aliases contrib platforms)
