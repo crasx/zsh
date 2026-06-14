@@ -12,6 +12,7 @@ fi
 if command -v ddev &> /dev/null; then
     # Aliases for ddev projects
     alias d='ddev'
+    alias ddc='ddev composer'
     alias dds='ddev start'
     alias ddc='ddev composer'
     alias ddr='ddev drush'

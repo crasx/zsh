@@ -60,6 +60,12 @@ GEOMETRY_PATH_COLOR=`geometry::hostcolor`
 # Better colors
 if [ `hostname` = "hawkeye" ]; then
   GEOMETRY_PATH_COLOR=9
+elif [ `hostname` = "potter" ]; then
+  GEOMETRY_PATH_COLOR=11
+elif [ `hostname` = "radar" ]; then
+  GEOMETRY_PATH_COLOR=10
+elif [ `hostname` = "hotlips" ]; then
+  GEOMETRY_PATH_COLOR=13
 fi
 
 # Docker config
@@ -123,3 +129,6 @@ umask 027
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opencode
+export PATH=/home/crasx/.opencode/bin:$PATH
