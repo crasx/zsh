@@ -3,7 +3,7 @@
 ##########################
 # Bootstrapping
 ##########################
-export PATH="./vendor/bin:$PATH"
+export PATH="$PATH:./vendor/bin"
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/zsh
 
@@ -44,8 +44,18 @@ GEOMETRY_PROMPT=( geometry_hostname geometry_status geometry_path ) # redefine l
 
 if [ `whoami` != "vagrant" ]; then
     # Show helpful git status on the right, but not in vagrant.
-    GEOMETRY_RPROMPT=( geometry_git geometry_exec_time )
+    GEOMETRY_RPROMPT=( geometry_git geometry_kube_selection geometry_exec_time )
 fi
+
+# Kube context segment - reflects $KUBECONFIG directly (set via kubeconfigset),
+# rather than shelling out to `kubectl config current-context` on every prompt.
+GEOMETRY_KUBE_SYMBOL="⎈"
+GEOMETRY_KUBE_COLOR="cyan"
+GEOMETRY_KUBE_CONTEXT_COLOR="cyan"
+geometry_kube_selection() {
+  [[ -n "$KUBECONFIG" ]] || return
+  echo -n "$(geometry_kube_symbol) $(ansi ${GEOMETRY_KUBE_CONTEXT_COLOR} ${KUBECONFIG:t})"
+}
 
 GEOMETRY_STATUS_SYMBOL="▲"             # default prompt symbol
 GEOMETRY_STATUS_COLOR="default"        # prompt symbol color
@@ -56,17 +66,6 @@ GEOMETRY_STATUS_COLOR_ROOT="red"       # root prompt symbol color
 
 # Set path color based on hash of hostname.
 GEOMETRY_PATH_COLOR=`geometry::hostcolor`
-
-# Better colors
-if [ `hostname` = "hawkeye" ]; then
-  GEOMETRY_PATH_COLOR=9
-elif [ `hostname` = "potter" ]; then
-  GEOMETRY_PATH_COLOR=11
-elif [ `hostname` = "radar" ]; then
-  GEOMETRY_PATH_COLOR=10
-elif [ `hostname` = "hotlips" ]; then
-  GEOMETRY_PATH_COLOR=13
-fi
 
 # Docker config
 export COMPOSE_DOCKER_CLI_BUILD=1;
@@ -121,7 +120,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 # Finishing touches
 ssh-add 2&>/dev/null
 
-if [ `command -v kubektl` ]; then source <(kubectl completion zsh); fi
+if [ `command -v kubectl` ]; then source <(kubectl completion zsh); fi
 
 # Great article on 027 - https://blogs.gentoo.org/mgorny/2011/10/18/027-umask-a-compromise-between-security-and-simplicity/
 umask 027

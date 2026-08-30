@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-kubeconfigset() {
+kubeconfigset_permanent() {
   # Make sure the kubeconfig input file exists
   if [ ! -f ~/.kube/kubeconfig/$1 ]; then
     echo "File ~/.kube/kubeconfig/$1 does not exist"
@@ -11,6 +11,15 @@ kubeconfigset() {
   rm ~/.kube/config
   ln -s ~/.kube/kubeconfig/$1 ~/.kube/config
   ls -l ~/.kube/config
+}
+
+kubeconfigset() {
+  # Make sure the kubeconfig input file exists
+  if [ ! -f ~/.kube/kubeconfig/$1 ]; then
+    echo "File ~/.kube/kubeconfig/$1 does not exist"
+    return 1
+  fi
+  export KUBECONFIG="$HOME/.kube/kubeconfig/$1"
 }
 
 # Add zsh completion for kubeconfigset

@@ -2,6 +2,9 @@
 
 for f in $ZSH_CUSTOM/plugins/aliases/functions/*.zsh; do source $f; done ;
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 alias dc='docker compose'
 alias rezsh='source ~/.zshrc'
 
